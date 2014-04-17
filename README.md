@@ -13,14 +13,14 @@ Tasks can be created and deleted for each project.
 
 Uses the following concepts:
 
-side-menu			- navigation
-template file 		- data stored in template-cache, allows code to be removed from 
+*side-menu			- navigation
+*template file 		- data stored in template-cache, allows code to be removed from 
 					  Index.html - reduces clutter
-html5 localstorage 	- for persistent storage 
-checkbox input type - I did not use <ion-checkbox> as it did not work well for me along 
+*html5 localstorage 	- for persistent storage 
+*checkbox input type - I did not use <ion-checkbox> as it did not work well for me along 
 					  with <ion-list>
-ng-change 			- to track changes to state of checkbox
-option-buttons 		- used to show delete buttons for both projects and tasks
+*ng-change 			- to track changes to state of checkbox
+*option-buttons 		- used to show delete buttons for both projects and tasks
 
 
 
