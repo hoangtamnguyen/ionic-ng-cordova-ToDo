@@ -1,0 +1,16 @@
+
+
+/* Checkbox is NOT Checked */
+.taskDone-false 
+{
+	text-decoration: none; 
+	color: red;
+}
+
+/* Checkbox isChecked */
+.taskDone-true 
+{
+	text-decoration: line-through; 
+	color: gray;
+}
+/*gray color: #808080; */

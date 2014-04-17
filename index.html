@@ -1,0 +1,184 @@
+<!-- 
+Copied from:
+https://github.com/driftyco/ionic-todo/blob/master/www/index.html
+8/04/14
+
+http://plnkr.co/edit/w7HhdWYUWAgBqDKwISSR?p=preview
+
+http://codepen.io/anon/pen/jyfHs
+http://codepen.io/ionic/pen/hqcju
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ToDo</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <!--
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="lib/js/ionic.js"></script>
+    <script src="lib/js/angular/angular.js"></script>
+    <script src="lib/js/angular-ui/angular-ui-router.js"></script>
+    <script src="lib/js/angular/angular-animate.js"></script>
+    <script src="lib/js/angular/angular-touch.js"></script>
+    <script src="lib/js/angular/angular-sanitize.js"></script>
+    <script src="lib/js/ionic-angular.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/app.js"></script>
+-->
+
+		<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+    	<link rel="stylesheet" href="css/style.css">
+
+
+		<script src="lib/ionic/js/ionic.bundle.js"></script>
+
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/services.js"></script>
+
+		<!-- needed for Cordova (must be last scipt and not in development files but 
+		auto included when run or emulate)-->
+		<script src="cordova.js"></script>
+
+  </head>
+
+
+  <!--================================================================================-->
+  <body ng-app="todo" ng-controller="TodoCtrl">
+
+
+  	<!-- Side Menus parent -->
+    <ion-side-menus>
+
+	  <!--============================================================================-->
+      <!-- Center content -->
+      <ion-side-menu-content>
+
+		<!-- header-bar main content area -->
+		<ion-header-bar class="bar bar-header bar-positive">
+
+			<!-- Toggle between side-menu and side-menu left -->
+			<button class="button button-icon" ng-click="toggleProjects()">
+				<i class="icon ion-navicon"></i>
+			</button> <!-- @END/ .buttons -->
+
+			<h1 class="title">{{activeProject.title}}</h1>
+
+	        <!-- New Task button-->
+	        <div class="buttons">
+	          <button class="button button-icon icon-left ion-ios7-plus" 
+	          	ng-click="newTask()">
+	            <!-- <i class="ion ion-plus"></i> -->
+	          </button>
+	        </div> <!-- @END/ .buttons -->
+
+			<!-- Button toggle to show/hide the Delete buttons	-->
+			<div class="buttons">
+	          <button class="button button-icon icon-right ion-ios7-minus" 
+	          	ng-click="data.showTaskDelete = !data.showTaskDelete">
+	          </button>
+	        </div>  <!-- @END/ .buttons -->
+
+<!-- -->
+<!--           <ion-list show-delete="data.showDelete" on-delete="onProjectDelete(item)"
+					option-buttons="itemButtons">
+            <ion-item ng-repeat="project in projects" item="project" 
+            	ng-click="selectProject(project, $index)"
+	        	ng-class="{active: activeProject == project}"> 
+    	        {{project.title}}
+ -->
+		</ion-header-bar> <!-- @END/ header-bar -->
+
+
+        <ion-content has-header="true">
+
+          	<!-- <list class="fade-in-not-out"> -->
+          	<!-- <ion-list show-delete="data.showTaskDelete" on-delete="tasks.splice(tasks.indexof(task), 1)" option-buttons="itemButtons"> -->
+  
+
+
+          <ion-list class="fade-in-not-out" show-delete="data.showTaskDelete" show-reorder="true" can-swipe="true" >
+
+			<ion-item ng-repeat="task in activeProject.tasks track by $index" item="task" 
+				on-delete="onTaskDelete(activeproject, index)">
+				
+
+				<input type="checkbox" ng-click="clickItem(item); $event.stopPropagation();" ng-model="task.checked" ng-change="cbChanged(task.checked)"/>
+				<!-- <input type="checkbox" ng-click="cbClicked(item)" ng-model="task.checked"/> -->
+
+					<!-- When task is done (checkbox isChecked) use class "taskDone-true" -->
+					<span class="taskDone-{{task.checked}}">{{task.title}}</span>
+
+			</ion-item>
+
+
+          </ion-list> <!-- @END/ .list -->
+
+          <!-- </ion-delete-button> -->
+		
+        </ion-content>
+
+      </ion-side-menu-content> <!-- @END/ center content area -->
+	  <!--============================================================================-->
+
+
+      <!--============================================================================-->
+      <!-- Left menu -->
+      <ion-side-menu side="left">
+
+      	<!-- Header-bar -->
+        <ion-header-bar class="bar-positive">        
+	        	        		
+	        <!-- Delete -->
+			<div class="buttons">
+	          <!-- added -->
+	          <button class="button button-icon icon ion-ios7-minus" 
+	          ng-click="data.showProjectDelete = !data.showProjectDelete">
+	          </button>
+	        </div>  <!-- @END/ .buttons -->
+
+	        <h1 class="title">Projects</h1> 
+
+	        <!-- Create New Project   -->
+	        <div class="buttons">
+	          <button class="button button-icon icon ion-ios7-plus" 
+	          ng-click="newProject()">
+	            <!-- <i class="ion ion-plus"></i> -->
+	          </button>
+	        </div> <!-- @END/ .buttons -->
+	       
+        </ion-header-bar> <!-- @END/ header-bar --> 
+
+
+        <!-- <ion-content has-header="true"> -->
+        <ion-content>
+
+          <ion-list show-delete="data.showProjectDelete" >
+
+            <ion-item ng-repeat="project in projects track by $index" item="project" 
+            	ng-click="selectProject(project, $index)"
+	        	ng-class="{active: activeProject == project}"
+	        	on-delete="onProjectDelete(project)"> 
+    	        {{project.title}}
+
+            </ion-item> <!-- @END/ .item -->
+
+          </ion-list> <!-- @END/ .list -->
+        </ion-content>
+
+      </ion-side-menu><!-- @END/ left side-menu -->
+      <!--============================================================================-->
+
+    </ion-side-menus> <!-- @END/ side-menu parent -->
+
+    <!--==============================================================================-->
+  
+	</body>
+
+</html>
+
