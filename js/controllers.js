@@ -46,12 +46,10 @@ angular.module('todo.controllers', [] )
   $scope.selectTask = function(task, index) {
     $scope.activeTask = task;
     Tasks.setLastActiveIndex(index);
-    // $ionicSideMenuDelegate.toggleLeft();
   };
 
   $scope.completionChanged = function() {
     Projects.save($scope.projects);
-    // $rootScope.$apply();
   };
 
   //*******************************************************************************
@@ -69,8 +67,6 @@ angular.module('todo.controllers', [] )
   {
     $scope.activeProject.tasks.splice(index, 1);
     Projects.save($scope.projects);
-    // $route.reload();
-    // $scope.apply();
   };
 
   //Delete Project - using splice function
@@ -82,19 +78,9 @@ angular.module('todo.controllers', [] )
   		alert("First delete all project tasks");
   		return;
   	}
-    // $scope.project.tasks.splice(0, $scope.project.tasks.length-1);
-    // $scope.onTaskDelete(project);
-    // $scope.project.tasks.splice(0,0);
   	$scope.projects.splice($scope.projects.indexOf(project), 1);
     Projects.save($scope.projects);
-
-    // $scope.apply();
-    // $route.reload();
-    // Projects.save($scope.projects);
   };
-
-
-
 
   //*******************************************************************************
   // Create our modal - instantiated by $ionicModal service
