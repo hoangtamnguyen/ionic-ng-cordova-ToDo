@@ -16,19 +16,43 @@ If within index.html need following <script> tag:
     <button class="button button-clear" ng-click="closeNewTask()">Cancel</button>
   </ion-header-bar>
   
-
   <ion-content has-header="true">
     
-    <form ng-submit="createTask(task)">
+    <form name="newTaskForm" ng-submit="createTask(task)">
       
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="Enter new task here...?" ng-model="task.title">
+
+          <!-- Grid used to position inputbox with space at each end --> 
+          <div class="row">
+            <!-- 10% spacing @ start of row-->
+            <div class="col col-10">
+            </div>
+            <!-- 80% spacing for inputbox -->
+            <div class="col col-80">
+              <label class="item item-input">
+                <input type="text" novalidate name="ibTaskName" placeholder="Enter new task here...?" ng-model="task.title" ng-required="true" maxlength="15">
+
+                <!-- Show "Required" error message until a value is entered -->
+                <span class="error padding" ng-show="newTaskForm.ibTaskName.$error.required">
+                Required!</span>
+
+                <!-- Show "Required" error message until a value is entered -->
+                <span class="error padding" ng-show="newTaskForm.ibTaskName.$error.maxlength">
+                Only 1 more character allowed!</span>
+              </label>
+            </div>
+            <!-- 10% spacing @ end of row-->
+            <div class="col col-10">
+            </div>
+
+          </div> <!-- @END/ .row -->  
+        
         </label>
-      </div>
+      </div> <!-- @END/ .list -->
       
       <div class="padding">
-        <button type="submit" class="button button-block button-assertive">Create Task</button>
+        <button type="submit" class="button button-block button-assertive" ng-disabled="newTaskForm.$invalid">Create Task</button>
       </div>
 
     </form> <!-- @END/ form -->
@@ -36,5 +60,3 @@ If within index.html need following <script> tag:
   </ion-content>
 
 </div>  <!-- @END/ .modal -->
-
-<!--</script>-->

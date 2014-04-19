@@ -1,21 +1,17 @@
 /*
  * Module - for controllers
 **/
-
 angular.module('todo.controllers', [] )
 
 /*
  * Controller
 **/
-
 .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
 
   // A utility function for creating a new project
   // with the given projectTitle
   var createProject = function(projectTitle) {
     var newProject = Projects.newProject(projectTitle);
-
-
 
     $scope.projects.push(newProject);
     Projects.save($scope.projects);
@@ -58,8 +54,6 @@ angular.module('todo.controllers', [] )
     // $rootScope.$apply();
   };
 
-
-
   //*******************************************************************************
 
  
@@ -69,51 +63,46 @@ angular.module('todo.controllers', [] )
   	showTaskDelete: false
   };
 
- 
-  // $scope.edit=function(project)
-  // {
-  // 	alert('Edit Project: ' + project);
-  // };
 
   //Delete Task - using splice function
   $scope.onTaskDelete=function(activeProject, index)
   {
     $scope.activeProject.tasks.splice(index, 1);
     Projects.save($scope.projects);
+    // $route.reload();
+    // $scope.apply();
   };
 
   //Delete Project - using splice function
   $scope.onProjectDelete=function(project)
   {
+  	//if project has tasks - return & don't delete it
+  	if(project.tasks.length > 0)
+  	{
+  		alert("First delete all project tasks");
+  		return;
+  	}
+    // $scope.project.tasks.splice(0, $scope.project.tasks.length-1);
+    // $scope.onTaskDelete(project);
+    // $scope.project.tasks.splice(0,0);
   	$scope.projects.splice($scope.projects.indexOf(project), 1);
     Projects.save($scope.projects);
+
+    // $scope.apply();
+    // $route.reload();
+    // Projects.save($scope.projects);
   };
 
 
-
-  //*************
-  $scope.moveProject=function(project, fromIndex, toIndex)
-  {
-  	$scope.projects.splice(fromIndex, 1);
-  	$scope.projects.splice(toIndex, 0, project);
-  };
 
 
   //*******************************************************************************
   // Create our modal - instantiated by $ionicModal service
   //call remove() after eachmodal to avoid mem leaks
-  // $scope.modalTemplate = { name: 'new-task.tpl.html' url:'templates/new-task.tpl.html' };
-
-  
+ 
   // $ionicModal.fromTemplateUrl('new-task.tpl.html', function(modal) {
   $ionicModal.fromTemplateUrl('templates/new-task.tpl.html', function(modal) {
-
-
-    	
-	// $ionicModal.fromTemplateUrl('templates/new-task.tpl.html', function(modal) {
-  	// $ionicModal( 'new-task.tpl.html', function(modal) {		
-
-  $scope.taskModal = modal;
+    $scope.taskModal = modal;
   }, 
 
   {
@@ -156,9 +145,13 @@ angular.module('todo.controllers', [] )
     Projects.save($scope.projects);
   };
     
+  //When inputbox changes value - save
+  $scope.inputChanged = function() {
+    Projects.save($scope.projects);
+  };
 
 
-  //toggle side-ment
+  //toggle side-menu
   $scope.toggleProjects = function() {
   	$ionicSideMenuDelegate.toggleLeft();
     // $scope.sideMenuController.toggleLeft();
