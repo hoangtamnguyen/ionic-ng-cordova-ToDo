@@ -45,4 +45,4 @@ Ionic, HTML5, CSS3 and Cordova (previously called Phone Gap)
 ##
 
 
-Michael Cullen April 2014
+Michael Cullen 2014
