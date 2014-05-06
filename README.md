@@ -13,17 +13,19 @@ Tasks can be created and deleted for each project.
 
 Uses the following concepts:
 
-*side-menu : navigation
+* side-menu : navigation
 
-*template file : data stored in template-cache, allows code to be removed from Index.html
+* template file : stores data in template-cache, allows code to be removed from Index.html
 
-*html5 localstorage : persistent storage 
+* HTML5 localstorage 
 
-*checkbox input type : I did not use ion-checkbox as it did not work well for me along with ion-list
+* checkbox input type : I did not use ion-checkbox as it did not work well for me along with ion-list
 
-*ng-change : to track changes to state of checkbox
+* ng-change : to track changes to state of checkbox
 
-*option-buttons : used to show delete buttons for both projects and tasks
+* option-buttons : used to show delete buttons for both projects and tasks
+
+* AngularJS form Validation (bypassing HTML5 validation) 
 
 
 ## iOS Simulator Screen Shots
@@ -38,7 +40,7 @@ Uses the following concepts:
 ## Motivation
 
 Learning AngularJS and how it can be used to create native type mobile phone Apps using 
-Ionic, HTML5, CSS3 and Cordova
+Ionic, HTML5, CSS3 and Cordova (previously called Phone Gap)
 
 ##
 

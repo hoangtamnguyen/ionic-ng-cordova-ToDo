@@ -86,7 +86,6 @@ angular.module('todo.controllers', [] )
   // Create our modal - instantiated by $ionicModal service
   //call remove() after eachmodal to avoid mem leaks
  
-  // $ionicModal.fromTemplateUrl('new-task.tpl.html', function(modal) {
   $ionicModal.fromTemplateUrl('templates/new-task.tpl.html', function(modal) {
     $scope.taskModal = modal;
   }, 

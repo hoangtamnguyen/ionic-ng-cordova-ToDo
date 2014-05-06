@@ -16,7 +16,37 @@
 /*gray color: #808080; */
 
 
+/*Form Validation */
 .error
 {
 	color: red;
+	whitespace: nowrap; /*not required here - puts content on a new line*/
 }
+
+
+/* Inputbox styling
+ * Only apply styling to form 'newTaskForm' 
+ * when input box value has been changed (dirty) And is valid 
+ */
+.newTaskForm input.ng-dirty.ng-valid {
+	border-left:3px solid #3d8b3d;
+	/*border-right:3px solid #3d8b3d;*/
+}
+
+input.ng-dirty.ng-invalid{
+	border-left:3px solid #cc2511;
+	/*border-right:3px solid #cc2511;*/
+}
+
+
+.newTaskForm input.ng-pristine.ng-valid{
+	border-left:3px solid #3d8b3d;
+	/*border-right:3px solid #cc2511;*/
+}
+
+/*.fmIxTasks*/
+input.ng-pristine.ng-invalid{
+	border-left:3px solid #cc2511;
+	/*border-right:3px solid #cc2511;*/
+}
+

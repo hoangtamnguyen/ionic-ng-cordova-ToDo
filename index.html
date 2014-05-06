@@ -64,26 +64,33 @@ http://codepen.io/ionic/pen/hqcju
 				on-delete="onTaskDelete(activeproject, index)"
 				option-buttons="itemButtons">
 				
-				<!-- Form required to make validation work -->
-				<form name="fmIxTasks">
+				<!-- Form required to make validation work 
+				novalidate: remove browser validation - only want to use ng validation-->
+				<form name="fmIxTasks" class="fmIxTasks" novalidate submit='fmSubmitted()'>
 					<!-- Grid used to position checkbox to left of inputbox -->	
 					<div class="row">
 	  					<div class="col col-10">
 	  						<!-- Checkbox	 -->
-							<input type="checkbox" novalidate ng-click="clickItem(task); $event.stopPropagation();"ng-model="task.checked" ng-change="cbChanged()">
+							<input type="checkbox" ng-click="clickItem(task); $event.stopPropagation();"ng-model="task.checked" ng-change="cbChanged()">
 						</div> <!-- @END/ .col 10% -->
 
+			
+<!-- 						ng-model-options="{ updateOn: 'mousedown' }" -->
+
 						<!-- Inputbox -->
-						<input type="text" name="ibIxTaskName" novalidate ng-model="task.title" class="taskDone-{{task.checked}}" ng-change="inputChanged()" ng-required="true" maxlength="15">
+						<input type="text" name="ibIxTaskName" ng-model="task.title"  
+						class="taskDone-{{task.checked}}" ng-change="inputChanged()" ng-required="true" maxlength="20" ng-focus='ibInFocus()' placeholder="Enter new task   here...?">
 		            </div> <!-- @END/ .row -->	
+
 
 		            <!-- 10% offset needed to position error message underneath inputbox -->
 		            <div class="row">
 		            	<div class="col col-10">
 		            	</div>
 		            	<!-- Error message -->
-		            	 <span class="error padding float-right" ng-show="fmIxTasks.ibIxTaskName.$error.required">
-			                Required!</span>
+	<!-- 	            	 <span class="error padding float-right" 
+		            	 ng-show="fmIxTasks.ibIxTaskName.$error.required">Required!
+		            	 </span> -->
 		            </div> <!-- @END/ .row -->
 	
 				</form> <!-- @END/ .form -->	

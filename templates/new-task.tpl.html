@@ -18,7 +18,8 @@ If within index.html need following <script> tag:
   
   <ion-content has-header="true">
     
-    <form name="newTaskForm" ng-submit="createTask(task)">
+    <!-- novalidate removes browser validation i.e. only user ng validation -->
+    <form name="newTaskForm" class="newTaskForm" ng-submit="createTask(task)" novalidate>
       
       <div class="list">
         <label class="item item-input">
@@ -31,24 +32,25 @@ If within index.html need following <script> tag:
             <!-- 80% spacing for inputbox -->
             <div class="col col-80">
               <label class="item item-input">
-                <input type="text" novalidate name="ibTaskName" placeholder="Enter new task here...?" ng-model="task.title" ng-required="true" maxlength="15">
 
-                <!-- Show "Required" error message until a value is entered -->
-                <span class="error padding" ng-show="newTaskForm.ibTaskName.$error.required">
-                Required!</span>
+                <input type="text" name="ibTaskName" placeholder="Enter new task   here...?" ng-model="task.title" ng-required="true" maxlength="20" class="col col-100">
 
-                <!-- Show "Required" error message until a value is entered -->
-                <span class="error padding" ng-show="newTaskForm.ibTaskName.$error.maxlength">
-                Only 1 more character allowed!</span>
               </label>
+
+              <!-- Show "Required" error message until a value is entered -->
+              <span class="error padding" ng-show="newTaskForm.ibTaskName.$error.required">
+              Required!
+              </span>
             </div>
+
             <!-- 10% spacing @ end of row-->
             <div class="col col-10">
             </div>
 
           </div> <!-- @END/ .row -->  
-        
-        </label>
+              
+        </label>  
+
       </div> <!-- @END/ .list -->
       
       <div class="padding">
