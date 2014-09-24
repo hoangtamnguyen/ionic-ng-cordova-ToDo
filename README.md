@@ -31,9 +31,9 @@ Uses the following concepts:
 ## iOS Simulator Screen Shots
 
 <div align="center">
-	<img width="45%" src="screen-shots/iOS_1.PNG" alt="Screenshot 1" title="Screenshot 1"></img>
+	<img width="45%" src="screen-shots/iOS_1.png" alt="Screenshot 1" title="Screenshot 1"></img>
 	<img width="5px" height="0px">
-	<img width="45%" src=screen-shots/iOS_2.png alt="Screenshot 2" title="Screenshot 2"></img>
+	<img width="45%" src="screen-shots/iOS_2.png" alt="Screenshot 2" title="Screenshot 2"></img>
 </div>
 <div align="center">
 	<img width="30%" src="screen-shots/iOS_3.png" alt="Screenshot 3" title="Screenshot 3"></img>
