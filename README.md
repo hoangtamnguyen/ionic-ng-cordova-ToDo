@@ -30,19 +30,27 @@ Uses the following concepts:
 
 ## iOS Simulator Screen Shots
 
+<div align="center">
+	<img width="45%" src="screen-shots/iOS_1.PNG" alt="Screenshot 1" title="Screenshot 1"></img>
+	<img width="5px" height="0px">
+	<img width="45%" src=screen-shots/iOS_2.png alt="Screenshot 2" title="Screenshot 2"></img>
+</div>
+<div align="center">
+	<img width="30%" src="screen-shots/iOS_3.png" alt="Screenshot 3" title="Screenshot 3"></img>
+	<img width="5px" height="0px">
+	<img width="30%" src="screen-shots/iOS_4.png" alt="Screenshot 4" title="Screenshot 4"></img>
+	<img width="5px" height="0px">
+	<img width="30%" src="screen-shots/iOS_5.png" alt="Screenshot 5" title="Screenshot 5"></img>
+</div>
 
-<img width="300" src=screen-shots/iOS_1.png "image 1"></img>
-<img width="300" src=screen-shots/iOS_2.png "image 1"></img>
-<img width="300" src=screen-shots/iOS_3.png "image 1"></img>
-<img width="300" src=screen-shots/iOS_4.png "image 1"></img>
-<img width="300" src=screen-shots/iOS_5.png "image 1"></img>
+
+
 
 ## Motivation
 
 Learning AngularJS and how it can be used to create native type mobile phone Apps using 
 Ionic, HTML5, CSS3 and Cordova (previously called Phone Gap)
 
-##
-
+<hr>
 
 Michael Cullen 2014
